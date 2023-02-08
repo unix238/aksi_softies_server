@@ -1,3 +1,1 @@
-class authRouter {
-    
-}
+console.log("hui");
