@@ -2,11 +2,15 @@ const config = require('./config/config.js');
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const ItemRouter = require('./routers/ItemRouter');
+const ItemRouter = require('./routers/itemRouter');
+const TagRouter = require('./routers/tagRouter');
+const CategoryRouter = require('./routers/categoryRouter');
 const app = express();
 
 app.use(express.json());
 app.use('/item', ItemRouter);
+app.use('/tag', TagRouter);
+app.use('/category', CategoryRouter);
 
 const start = async () => {
     try {
