@@ -1,1 +1,5 @@
-console.log("hui4...");
+class AuthRouter{
+    async Route(req, res){
+        return ()=>{return ()=>{}}
+    }
+}
