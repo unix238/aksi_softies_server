@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+<<<<<<< HEAD
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "345678": "456tyuhbnk"
+=======
+    "test": "echo \"Error: no test specified\" && exit Beka chort",
+    "dev": "nodemon index.js"
+>>>>>>> 8dabfef442242f114d21625b1a0120c236db13c9
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
+    "nodemon": "^2.0.20"
+  }
+}
