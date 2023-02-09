@@ -2,7 +2,7 @@ const Item = require('../models/Item.js');
 const Tags = require('../models/Tags.js');
 const Categories = require('../models/Categories.js');
 
-class ItemController {
+class itemController {
     async createItem(req, res) {
         try {
             const item = await Item.create(req.body);
@@ -54,4 +54,4 @@ class ItemController {
     }
 }
 
-module.exports = new ItemController();
+module.exports = new itemController();

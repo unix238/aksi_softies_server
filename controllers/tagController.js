@@ -1,6 +1,6 @@
 const Tags = require('../models/Tags.js');
 
-class TagController {
+class tagController {
     async createTag(req, res) {
         try {
             const tag = await Tags.create(req.body);
@@ -52,4 +52,4 @@ class TagController {
     }
 }
 
-module.exports = new TagController();
+module.exports = new tagController();

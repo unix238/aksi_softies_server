@@ -1,6 +1,6 @@
 const Categories = require('../models/Categories.js');
 
-class CategoryController {
+class categoryController {
     async createCategory(req, res) {
         try {
             const category = await Categories.create(req.body);
@@ -52,4 +52,4 @@ class CategoryController {
     }
 }
 
-module.exports = new CategoryController();
+module.exports = new categoryController();
