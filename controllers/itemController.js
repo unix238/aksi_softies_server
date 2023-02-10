@@ -1,5 +1,4 @@
 const Item = require('../models/Item.js');
-const Tags = require('../models/Tags.js');
 const Categories = require('../models/Categories.js');
 
 class itemController {
