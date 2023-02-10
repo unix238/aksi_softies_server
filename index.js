@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const ItemRouter = require('./routers/itemRouter');
-const TagRouter = require('./routers/tagRouter');
 const CategoryRouter = require('./routers/categoryRouter');
 const AuthRouter = require('./routers/authRouter');
 
@@ -11,7 +10,6 @@ const app = express();
 
 app.use(express.json());
 app.use('/item', ItemRouter);
-app.use('/tag', TagRouter);
 app.use('/category', CategoryRouter);
 app.use('/auth', AuthRouter);
 
