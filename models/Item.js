@@ -7,6 +7,7 @@ const itemSchema = new mongoose.Schema({
     description: { type: [String], required: true },
     images: { type: [String], required: true },
     material: { type: String, required: true},
+    context: {type: [String], required: true},
     category: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
