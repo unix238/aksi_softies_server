@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const ItemRouter = require('./routers/itemRouter');
 const CategoryRouter = require('./routers/categoryRouter');
 const AuthRouter = require('./routers/authRouter');
-const MaterialRouter = require('./models/Material.js');
+const MaterialRouter = require('./routers/MaterialRouter');
 const app = express();
 
 app.use(express.json());
