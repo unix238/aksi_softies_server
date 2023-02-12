@@ -52,34 +52,53 @@ class itemController {
         }
     }
 
-    // async getFilteredItems(req, res) {
-    //     try {
-    //         const filter = req.query;
+    async getFilteredItems(req, res) {
+        const filter = {
+            category: req.query.category,
+            material: req.query.material,
+            size: req.query.size,
+            price: req.query.price
+        }
+        
+        let query = {};
+        
+        if (filter.category) {
+            query.category = filter.category;
+        }
+        
+        if (filter.material) {
+            query.material = filter.material;
+        }
+        
+        if (filter.size) {
+            const [minSize, maxSize] = filter.size.split("-");
+            query.sizes = { $gte: minSize, $lte: maxSize };
+        }
+        
+        if (filter.price) {
+            const [minPrice, maxPrice] = filter.price.split("-");
+            query.price = { $gte: minPrice, $lte: maxPrice };
+        }
+        
+        let sort = {};
+        
+        if (req.query.sort === "price-asc") {
+            sort.price = 1;
+        } else if (req.query.sort === "price-desc") {
+            sort.price = -1;
+        } else if (req.query.sort === "novelty") {
+            sort.createdAt = -1;
+        }
+        console.log(query);
+        try {
+            const items = await Item.find(query).sort(sort);
+            return res.status(200).json(items);
 
-    //         // const items = await Item.find({material: filter.material});
-
-    //         const [minPrice, maxPrice] = filter.price.split("-").map(Number);
-    //         // const items = await Item.find({price: {$gte: minPrice, $lte: maxPrice}});
-
-    //         const [minSize, maxSize] = filter.size.split("-").map(Number);
-    //         // const items = await Item.find({sizes: {$gte: minSize, $lte: maxSize}});
-            
-    //         // const items = await Item.find({price: { $gte: 1, $lte: 100000 } }).sort({ price: 1 });
-    //         // const items = await Item.find({price: { $gte: 1, $lte: 100000 } }).sort({ price: -1 });
-    //         // const items = await Item.find().sort({ createdAt: -1 });
-
-    //         // const category = await Category.find({_id: req.query.category});
-            
-    //         // const items = await Item.find({category: category._id});
-    //         // console.log(category._id);
-    //         return res.status(200).json(items);
-    //         return res.status(200).json({});
-
-    //     } catch (e) {
-    //         console.log(e);
-    //         return res.status(500).json(e);
-    //     }
-    // }
+        } catch (e) {
+            console.log(e);
+            return res.status(500).json(e);
+        }
+    }
 }
 
 module.exports = new itemController();
