@@ -4,7 +4,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const ItemRouter = require('./routers/itemRouter');
 const CategoryRouter = require('./routers/categoryRouter');
-const AuthRouter = require('./routers/authRouter');
 const MaterialRouter = require('./routers/MaterialRouter');
 const app = express();
 
@@ -12,7 +11,6 @@ app.use(express.json());
 app.use(cors());
 app.use('/item', ItemRouter);
 app.use('/category', CategoryRouter);
-app.use('/auth', AuthRouter);
 app.use('/material', MaterialRouter);
 
 const start = async () => {
