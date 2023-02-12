@@ -6,12 +6,16 @@ const itemSchema = new mongoose.Schema({
     sizes: { type: [String], required: true },
     description: { type: [String], required: true },
     images: { type: [String], required: true },
-    material: { type: [String], required: true},
+    material: { 
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Material',
+    },
     context: {type: [String], required: true},
     category: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'Categories',
+        ref: 'Category',
     },
     createdAt: {type: Date, default: Date.now},
 });

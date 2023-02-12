@@ -1,9 +1,9 @@
-const Categories = require('../models/Categories.js');
+const Category = require('../models/Category.js');
 
 class categoryController {
     async createCategory(req, res) {
         try {
-            const category = await Categories.create(req.body);
+            const category = await Category.create(req.body);
             return res.status(200).json(category);
         } catch (e) {
             console.log(e);
@@ -13,7 +13,7 @@ class categoryController {
 
     async getCategories(req, res) {
         try {
-            const categories = await Categories.find();
+            const categories = await Category.find();
             return res.status(200).json(categories);
         } catch (e) {
             console.log(e);
@@ -23,7 +23,7 @@ class categoryController {
 
     async getCategoryById(req, res) {
         try {
-            const category = await Categories.findById(req.params.id);
+            const category = await Category.findById(req.params.id);
             return res.status(200).json(category);
         } catch (e) {
             console.log(e);
@@ -33,7 +33,7 @@ class categoryController {
 
     async updateCategory(req, res) {
         try {
-            const updatedCategory = await Categories.updateOne(req.body);
+            const updatedCategory = await Category.updateOne(req.body);
             return res.status(200).json(updatedCategory);
         } catch(e) {
             console.log(e);
@@ -43,7 +43,7 @@ class categoryController {
 
     async deleteCategory(req, res) {
         try {
-            const deletedCategory = await Categories.deleteOne(req.body);
+            const deletedCategory = await Category.deleteOne(req.body);
             return res.status(200).json(deletedCategory);
         } catch(e) {
             console.log(e);
