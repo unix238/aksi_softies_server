@@ -4,9 +4,9 @@ const uploadMiddleware = require('../middleware/uploadMiddleware.js');
 const ItemRouter = Router();
 
 ItemRouter.post(
-  '/create',
-  [uploadMiddleware.array('images')],
-  ItemController.createItem
+    '/create',
+    [uploadMiddleware.array('images')],
+    ItemController.createItem
 );
 ItemRouter.get('/all', ItemController.getItems);
 ItemRouter.get('/get/:id', ItemController.getItemById);
