@@ -72,15 +72,15 @@ class itemController {
     }
 
     if (filter.size) {
-      const [minSize, maxSize] = filter.size.split('-');
+      const [minSize, maxSize] = filter.size.split('-').map(Number);
       query.sizes = { $gte: minSize, $lte: maxSize };
     }
 
     if (filter.price) {
-      const [minPrice, maxPrice] = filter.price.split('-');
+      const [minPrice, maxPrice] = filter.price.split('-').map(Number);
       query.price = { $gte: minPrice, $lte: maxPrice };
     }
-
+    console.log(filter);
     let sort = {};
 
     if (req.query.sort === 'price-asc') {
