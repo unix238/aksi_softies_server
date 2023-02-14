@@ -1,8 +1,9 @@
 const Router = require('express');
 const ItemController = require('../controllers/itemController.js');
+const uploadMiddleware = require('../middleware/uploadMiddleware.js');
 const ItemRouter = Router();
 
-ItemRouter.post('/create', ItemController.createItem);
+ItemRouter.post('/create', [uploadMiddleware], ItemController.createItem);
 ItemRouter.get('/all', ItemController.getItems);
 ItemRouter.get('/get/:id', ItemController.getItemById);
 ItemRouter.put('/update', ItemController.updateItem);
