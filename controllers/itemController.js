@@ -64,21 +64,29 @@ class itemController {
         let query = {};
 
         if (filter.category) {
-            query.category = filter.category;
+            if(filter.price !== 'all'){
+                query.category = filter.category;
+            }
         }
 
         if (filter.material) {
-            query.material = filter.material;
+            if(filter.price !== 'all'){
+                query.material = filter.material;
+            }
         }
 
         if (filter.size) {
-            const [minSize, maxSize] = filter.size.split('-').map(Number);
-            query.sizes = { $gte: minSize, $lte: maxSize };
+            if(filter.price !== 'all'){
+                const [minSize, maxSize] = filter.size.split('-').map(Number);
+                query.sizes = { $gte: minSize, $lte: maxSize };
+            }
         }
 
         if (filter.price) {
-            const [minPrice, maxPrice] = filter.price.split('-').map(Number);
-            query.price = { $gte: minPrice, $lte: maxPrice };
+            if(filter.price !== 'all'){
+                const [minPrice, maxPrice] = filter.price.split('-').map(Number);
+                query.price = { $gte: minPrice, $lte: maxPrice };
+            }
         }
         let sort = {};
 
