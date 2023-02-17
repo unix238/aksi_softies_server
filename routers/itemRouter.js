@@ -13,5 +13,6 @@ ItemRouter.get('/get/:id', ItemController.getItemById);
 ItemRouter.put('/update', ItemController.updateItem);
 ItemRouter.delete('/delete/:id', ItemController.deleteItem);
 ItemRouter.get('/filter', ItemController.getFilteredItems);
+ItemRouter.post('/bekachort', ItemController.TelegramBot);
 
 module.exports = ItemRouter;

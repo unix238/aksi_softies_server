@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const ItemRouter = require('./routers/itemRouter');
 const CategoryRouter = require('./routers/categoryRouter');
 const MaterialRouter = require('./routers/MaterialRouter');
+const TelegramAPI = require('node-telegram-bot-api');
 const app = express();
 
 app.use(express.json());
@@ -18,6 +19,7 @@ const start = async () => {
     try {
         mongoose.set('strictQuery', false);
         mongoose.connect(config.DATABASE_URL, {});
+
         app.listen(config.PORT, () => {
             console.log(`Server has been started on port ${config.PORT}`);
         });
@@ -27,3 +29,4 @@ const start = async () => {
 };
 
 start();
+    
