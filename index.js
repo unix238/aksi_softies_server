@@ -22,7 +22,7 @@ const start = async () => {
     mongoose.connect(config.DATABASE_URL, {});
 
     app.listen(config.PORT, () => {
-      console.log(`Server has been started on port ${config.PORT}`);
+      console.log(`Server has been started on port  ${config.PORT}`);
     });
   } catch (e) {
     console.log(e);
