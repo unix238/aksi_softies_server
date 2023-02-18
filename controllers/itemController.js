@@ -134,7 +134,7 @@ class itemController {
         // console.log(item.size);
         // console.log(itemData);
         const baseUrl = '';
-        // console.log(itemData.images[0]);
+        console.log(itemData.images[0]);
         const itemImageUrl = `http://localhost:8080/` + itemData.images[0];
         // await bot.sendMessage(
         //     '-867559539',
