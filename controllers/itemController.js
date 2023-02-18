@@ -137,10 +137,10 @@ class itemController {
                     '-867559539',
                     `ID товара: ${itemData.id}\nНазвание товара: ${itemData.title[1]}\nРазмер товара: ${item.size}см\n}`
                 );
-                await bot.sendPhoto({
-                    chat_id: '-867559539',
-                    photo: itemImageUrl,
-                });
+                // await bot.sendPhoto({
+                //     chat_id: '-867559539',
+                //     photo: itemImageUrl,
+                // });
             });
 
             res.send('Message sent');
