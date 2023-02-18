@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const ItemRouter = require('./routers/itemRouter');
 const CategoryRouter = require('./routers/categoryRouter');
 const MaterialRouter = require('./routers/MaterialRouter');
-const TelegramAPI = require('node-telegram-bot-api');
 const app = express();
 
 app.use(express.json());
@@ -29,4 +28,3 @@ const start = async () => {
 };
 
 start();
-    

@@ -1,7 +1,9 @@
 const Item = require('../models/Item.js');
 const TelegramAPI = require('node-telegram-bot-api');
-const {TOKEN} = require('../config/config.js');
+const { TOKEN } = require('../config/config.js');
 const bot = new TelegramAPI(TOKEN, { polling: true });
+const url = require('url');
+const path = require('path');
 
 class itemController {
     async createItem(req, res) {
@@ -86,7 +88,9 @@ class itemController {
 
         if (filter.price) {
             if (filter.price !== 'all') {
-                const [minPrice, maxPrice] = filter.price.split('-').map(Number);
+                const [minPrice, maxPrice] = filter.price
+                    .split('-')
+                    .map(Number);
                 query.price = { $gte: minPrice, $lte: maxPrice };
             }
         }
@@ -107,18 +111,47 @@ class itemController {
             return res.status(500).json(e);
         }
     }
-    async TelegramBot(req, res){
-        console.log(req.body);
-        const userName = req.body.userName;
-        const message = req.body.message;
-        const userContact = req.body.userContact;
-        const email = req.body.email;
-        console.log(userName, message, userContact);
+    async TelegramBot(req, res) {
+        // console.log(req.body);
+        const name = req.body.userData.name;
+        const email = req.body.userData.email;
+        const phone = req.body.userData.phone;
+        const social = req.body.userData.social;
+        const city = req.body.userData.city;
+        const street = req.body.userData.street;
+        const zip = req.body.userData.zip;
+        const message = req.body.userData.message;
+
         try {
-            await bot.sendMessage(
-                '-867559539',
-                `userName: ${userName}\ntelegram or phone:${userContact}\nmessage:${message}\nemail:${email}`
-            );
+            // await bot.sendMessage(
+            //     '-867559539',
+            //     `Имя: ${name}\nНомер: ${phone}\nemail: ${email}\nСоцсеть: ${social}\nГород: ${city}\nУлица: ${street}\nПочтовый индекс: ${zip}\nСообщение: ${message}\n`
+            // );
+
+            req.body.items.forEach(async (item) => {
+                const itemData = await Item.findById(item.id);
+                // console.log(item.images[0]);
+                // console.log(item.size);
+                // console.log(itemData);
+                const baseUrl = '';
+                // console.log(itemData.images[0]);
+                const itemImageUrl = url.resolve(
+                    baseUrl,
+                    path.normalize(itemData.images[0])
+                );
+                // await bot.sendMessage(
+                //     '-867559539',
+                //     `ID товара: ${itemData.id}\nНазвание товара: ${itemData.title[1]}\nРазмер товара: ${item.size}см\n}`
+                // );
+                console.log(itemImageUrl);
+                // bot.sendPhoto('-867559539', itemImageUrl);
+                bot.sendPhoto({
+                    chat_id: '-867559539',
+                    caption: 'This is my test image',
+                    photo: itemImageUrl, //replace your image url here
+                });
+            });
+
             res.send('Message sent');
         } catch (e) {
             req.send(e);
