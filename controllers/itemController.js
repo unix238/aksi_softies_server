@@ -2,8 +2,6 @@ const Item = require('../models/Item.js');
 const TelegramAPI = require('node-telegram-bot-api');
 const { TOKEN } = require('../config/config.js');
 const bot = new TelegramAPI(TOKEN, { polling: true });
-const url = require('url');
-const path = require('path');
 
 class itemController {
     async createItem(req, res) {
