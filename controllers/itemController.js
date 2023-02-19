@@ -1,5 +1,3 @@
-/** @format */
-
 const Item = require('../models/Item.js');
 const TelegramAPI = require('node-telegram-bot-api');
 const { TOKEN } = require('../config/config.js');
